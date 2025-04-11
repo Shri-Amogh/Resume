@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizontal Resume</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .horizontal-scroll-wrapper {
+      display: flex;
+      height: 100vh;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x proximity; /* Set to proximity */
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .section {
+      flex: 0 0 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      scroll-snap-align: start;
+    }
+
+    .section1 { background: #1a1a2e; }
+    .section2 { background: #16213e; }
+    .section3 { background: #0f3460; }
+
+    /* Hide scrollbar */
+    .horizontal-scroll-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+    .horizontal-scroll-wrapper {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="horizontal-scroll-wrapper" id="scroll-container">
+    <div class="section section1">
+      <div>
+        <h1>Your Name</h1>
+        <p>Short intro or tagline here</p>
+      </div>
+    </div>
+    <div class="section section2">
+      <div>
+        <h2>Experience</h2>
+        <p>Job Title @ Company</p>
+        <p>Job Description</p>
+      </div>
+    </div>
+    <div class="section section3">
+      <div>
+        <h2>Skills & Projects</h2>
+        <p>List of skills or project highlights</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('scroll-container');
+    const mouseSensitivity = 1; // Lower sensitivity for mouse
+    const touchpadSensitivity = 25; // Higher sensitivity for touchpad
+    const deltaThreshold = 200; // Adjust this threshold as needed
+
+    window.addEventListener('wheel', function (e) {
+      console.log("Wheel event detected:", e.deltaY);
+      let sensitivityFactor;
+
+      if (Math.abs(e.deltaY) <= deltaThreshold) {
+        sensitivityFactor = touchpadSensitivity;
+      } else {
+        sensitivityFactor = mouseSensitivity;
+      }
+
+      container.scrollBy({
+        left: e.deltaY * sensitivityFactor,
+        behavior: 'smooth' // Enable smooth scrolling
+      });
+      e.preventDefault();
+    }, { passive: false });
+  </script>
+</body>
+</html>
