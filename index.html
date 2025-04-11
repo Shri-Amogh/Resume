@@ -15,7 +15,8 @@
       height: 100vh;
       width: 100vw;
       overflow: hidden;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e1e2f;
     }
 
     .horizontal-scroll-wrapper {
@@ -23,7 +24,7 @@
       height: 100vh;
       overflow-x: auto;
       overflow-y: hidden;
-      scroll-snap-type: x proximity; /* Set to proximity */
+      scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
     }
@@ -34,19 +35,49 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      color: white;
       scroll-snap-align: start;
+      color: white;
     }
 
-    .section1 { background: #1a1a2e; }
-    .section2 { background: #16213e; }
-    .section3 { background: #0f3460; }
+    .section1 {
+      background-color: #0e0f1a;
+      color: #ff9901;
+      flex-direction: column;
+      font-size: 2.5rem;
+    }
 
-    /* Hide scrollbar */
+    .section2 {
+      background-color: #1e1e2f;
+      flex-direction: column;
+      color: #ff9901;
+      padding: 2rem;
+      font-size: 1.2rem;
+      line-height: 2;
+    }
+
+    .section2 p {
+      max-width: 600px;
+      margin: 1rem 0;
+      border-left: 3px solid #00c7b1;
+      padding-left: 1rem;
+    }
+
+    .section3 {
+      background-color: #1e1e2f; /* or a new color if you want */
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #016bff;
+      font-size: 1.8rem;
+      padding: 2rem;
+    }
+
+
     .horizontal-scroll-wrapper::-webkit-scrollbar {
       display: none;
     }
+
     .horizontal-scroll-wrapper {
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -58,34 +89,51 @@
     <div class="section section1">
       <div>
         <h1>Amogh Shrivastava</h1>
-        <p>>>>Drexel University<<<</p>
+        <p>Drexel University</p>
+        <p>Physics Undergraduate</p>
       </div>
     </div>
     <div class="section section2">
-      <div>
-        <h2>Experience</h2>
-        <p>Job Title @ Company</p>
-        <p>Job Description</p>
+      <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start;">
+        <h1 style="color:#00c7b1; margin-left: 10rem;">Experience</h1>
+        <div style="display: flex; overflow-x: auto; padding: 2rem; gap: 2rem;">
+          <div style="flex: 0 0 25vw; padding: 1rem; border-radius: 2px; color: #00c7b1;">
+            <p>
+              I have 4 terms worth of cs classes when i apply, plus about 40 credits in Physics 
+            </p>
+          </div>
+          <div style="flex: 0 0 25vw; padding: 1rem; border-radius: 2px; color: #00c7b1;">
+            <p>
+              I love doing good stuff !! :)
+            </p>
+          </div>
+          <div style="flex: 0 0 25vw; padding: 1rem; border-radius: 2px; color: #00c7b1;">
+            <p>
+              This is a test site
+            </p>
+          </div>
+          
+        </div>
       </div>
     </div>
+    
     <div class="section section3">
       <div>
-        <h2>Skills & Projects</h2>
-        <p>List of skills or project highlights</p>
+        <h1>Skills & Projects</h1>
+        <p>I know this belonged in the prev section, I was a ...............................................</p>
       </div>
+    
     </div>
   </div>
 
   <script>
     const container = document.getElementById('scroll-container');
-    const mouseSensitivity = 1; // Lower sensitivity for mouse
-    const touchpadSensitivity = 25; // Higher sensitivity for touchpad
-    const deltaThreshold = 200; // Adjust this threshold as needed
+    const mouseSensitivity = 1;
+    const touchpadSensitivity = 25;
+    const deltaThreshold = 200;
 
     window.addEventListener('wheel', function (e) {
-      console.log("Wheel event detected:", e.deltaY);
       let sensitivityFactor;
-
       if (Math.abs(e.deltaY) <= deltaThreshold) {
         sensitivityFactor = touchpadSensitivity;
       } else {
@@ -94,7 +142,7 @@
 
       container.scrollBy({
         left: e.deltaY * sensitivityFactor,
-        behavior: 'smooth' // Enable smooth scrolling
+        behavior: 'smooth'
       });
       e.preventDefault();
     }, { passive: false });
