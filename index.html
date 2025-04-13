@@ -10,6 +10,10 @@
       padding: 0;
       box-sizing: border-box;
     }
+    .section {
+      touch-action: pan-y pan-x;
+    }
+
 
     html, body {
       height: 100vh;
@@ -235,20 +239,19 @@
     const container = document.getElementById('scroll-container');
 
     let startX = 0;
-    let scrollLeft = 0;
     let isDown = false;
 
     container.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
       isDown = true;
-      startX = e.touches[0].pageX;
-      scrollLeft = container.scrollLeft;
     });
 
     container.addEventListener('touchmove', (e) => {
       if (!isDown) return;
-      const x = e.touches[0].pageX;
-      const walk = (startX - x) * 0.5;
-      container.scrollLeft = scrollLeft + walk;
+      const x = e.touches[0].clientX;
+      const diff = startX - x;
+      container.scrollLeft += diff;
+      startX = x; // update to current for smoother dragging
     });
 
     container.addEventListener('touchend', () => {
@@ -263,5 +266,8 @@
       e.preventDefault();
     }, { passive: false });
   </script>
+
+
+
 </body>
 </html>
