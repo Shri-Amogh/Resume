@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Amogh Shrivastava</title>
   <style>
     * {
@@ -15,29 +14,41 @@
     html, body {
       height: 100vh;
       width: 100vw;
-      /* overflow: hidden; REMOVED this line */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #1e1e2f;
+      overflow: hidden;
     }
 
     .horizontal-scroll-wrapper {
       display: flex;
       height: 100vh;
+      width: 100vw;
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
+    }
+
+    .horizontal-scroll-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .horizontal-scroll-wrapper {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
 
     .section {
-      flex: 0 0 100vw;
+      min-width: 100vw;
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       scroll-snap-align: start;
       color: white;
+      flex-shrink: 0;
     }
 
     .section1 {
@@ -74,57 +85,6 @@
       padding: 2rem;
     }
 
-    .horizontal-scroll-wrapper::-webkit-scrollbar {
-      display: none;
-    }
-
-    .horizontal-scroll-wrapper {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    @media (max-width: 768px) {
-      .section {
-        font-size: 1.2rem;
-        padding: 1rem;
-        flex-direction: column;
-      }
-
-      .section2 {
-        padding: 1rem;
-        align-items: flex-start;
-        font-size: 1rem;
-      }
-
-      .section2 > div > div {
-        flex-direction: column !important;
-        overflow-x: hidden !important;
-        gap: 1rem !important;
-        width: 100%;
-      }
-
-      .section2 > div > div > div {
-        flex: 1 1 100% !important;
-        width: 100%;
-      }
-
-      .section3 {
-        font-size: 1.4rem;
-        padding: 1rem;
-      }
-
-      .bg-video-section {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.4;
-      }
-    }
-
     .experience-card {
       position: relative;
       flex: 0 0 31vw;
@@ -154,9 +114,45 @@
       background-color: rgba(0, 0, 0, 0);
       border-radius: 12px;
     }
+
+    .bg-video-section {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.4;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        font-size: 1.2rem;
+        flex-direction: column;
+      }
+
+      .section2 {
+        font-size: 1rem;
+      }
+
+      .section2 > div > div {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        width: 100%;
+      }
+
+      .section2 > div > div > div {
+        width: 100%;
+      }
+
+      .section3 {
+        font-size: 1.4rem;
+        padding: 1rem;
+      }
+    }
   </style>
 </head>
-
 <body>
   <div class="horizontal-scroll-wrapper" id="scroll-container">
     
@@ -170,10 +166,9 @@
 
     <div class="section section2">
       <div style="width: 100%; display: flex; flex-direction: column; text-align: center;">
-        <h1 style="color:#00c7b1; text-align:center">Experience</h1>
+        <h1 style="color:#00c7b1;">Experience</h1>
         
         <div style="display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 1.5rem;">
-    
           <div class="experience-card">
             <video autoplay muted loop playsinline class="bg-video">
               <source src="video1.mp4" type="video/mp4" />
@@ -182,7 +177,7 @@
               <p>I have 4 terms worth of cs classes when I apply, plus about 40 credits in Physics</p>
             </div>
           </div>
-    
+
           <div class="experience-card">
             <video autoplay muted loop playsinline class="bg-video">
               <source src="video2.mp4" type="video/mp4" />
@@ -191,7 +186,7 @@
               <p>I love doing good stuff !! :)</p>
             </div>
           </div>
-    
+
           <div class="experience-card">
             <video autoplay muted loop playsinline class="bg-video">
               <source src="video3.mp4" type="video/mp4" />
@@ -200,11 +195,10 @@
               <p>This is a test site</p>
             </div>
           </div>
-    
         </div>
       </div>
     </div>
-    
+
     <div class="section section3">
       <div>
         <h1>Skills & Projects</h1>
@@ -223,7 +217,6 @@
       <video autoplay muted loop playsinline class="bg-video-section">
         <source src="HERE.mp4" type="video/mp4" />
       </video>
-    
       <div class="section3-content">
         <h1>Skills & Projects3</h1>
         <p>3I know this belonged in the prev section, I was a ...............................................</p>
@@ -233,7 +226,7 @@
   </div>
 
   <script>
-    // Desktop-only horizontal wheel scroll enhancement
+    // Desktop scroll handler (wheel-based)
     if (!('ontouchstart' in window)) {
       const container = document.getElementById('scroll-container');
       const mouseSensitivity = 1;
@@ -241,17 +234,14 @@
       const deltaThreshold = 200;
 
       window.addEventListener('wheel', function (e) {
-        let sensitivityFactor;
-        if (Math.abs(e.deltaY) <= deltaThreshold) {
-          sensitivityFactor = touchpadSensitivity;
-        } else {
-          sensitivityFactor = mouseSensitivity;
-        }
+        let sensitivityFactor = (Math.abs(e.deltaY) <= deltaThreshold)
+          ? touchpadSensitivity : mouseSensitivity;
 
         container.scrollBy({
           left: e.deltaY * sensitivityFactor,
           behavior: 'smooth'
         });
+
         e.preventDefault();
       }, { passive: false });
     }
