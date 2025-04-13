@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amogh Shrivastava</title>
   <style>
     * {
@@ -16,18 +16,18 @@
       width: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #1e1e2f;
-      overflow: hidden;
+      /* Enable native scroll on mobile */
+      overflow: auto;
     }
 
     .horizontal-scroll-wrapper {
       display: flex;
       height: 100vh;
-      width: 100vw;
       overflow-x: auto;
       overflow-y: hidden;
       scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
       touch-action: pan-x;
     }
 
@@ -149,6 +149,7 @@
   </style>
 </head>
 <body>
+
   <div class="horizontal-scroll-wrapper" id="scroll-container">
     
     <div class="section section1">
@@ -221,9 +222,9 @@
   </div>
 
   <script>
-    // Enable horizontal scrolling with mouse wheel on desktop
     const container = document.getElementById('scroll-container');
 
+    // Mouse scroll only — doesn't affect mobile!
     window.addEventListener('wheel', function (e) {
       if (e.ctrlKey) return; // Let pinch-zoom work
 
@@ -236,5 +237,6 @@
       }
     }, { passive: false });
   </script>
+
 </body>
 </html>
