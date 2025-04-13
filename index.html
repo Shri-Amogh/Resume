@@ -264,7 +264,7 @@
     container.addEventListener('touchmove', (e) => {
       if (!isDown) return;
       const x = e.touches[0].pageX;
-      const walk = startX - x;
+      const walk = (startX - x) * 0.5; // Reduce scroll speed here (lower multiplier = smoother)
       container.scrollLeft = scrollLeft + walk;
     });
   
@@ -274,12 +274,13 @@
   
     window.addEventListener('wheel', function (e) {
       container.scrollBy({
-        left: e.deltaY,
+        left: e.deltaY * 0.5, // Smoother wheel scroll
         behavior: 'smooth'
       });
       e.preventDefault();
     }, { passive: false });
   </script>
+  
   
 </body>
 
