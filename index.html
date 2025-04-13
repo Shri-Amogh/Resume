@@ -27,8 +27,23 @@
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
     }
+
+    @media (max-width: 768px) {
+      .horizontal-scroll-wrapper {
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: auto;
+      }
+
+      .section {
+        flex: 0 0 auto;
+        height: auto;
+        scroll-snap-align: none;
+      }
+    }
+
 
     .section {
       flex: 0 0 100vw;
