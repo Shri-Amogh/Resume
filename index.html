@@ -80,7 +80,7 @@
       display: none;
     }
 
-      
+
    
     .experience-card {
       position: relative;
@@ -250,24 +250,37 @@
 
   <script>
     const container = document.getElementById('scroll-container');
-    const mouseSensitivity = 1;
-    const touchpadSensitivity = 25;
-    const deltaThreshold = 200;
-
+  
+    let startX = 0;
+    let scrollLeft = 0;
+    let isDown = false;
+  
+    container.addEventListener('touchstart', (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX;
+      scrollLeft = container.scrollLeft;
+    });
+  
+    container.addEventListener('touchmove', (e) => {
+      if (!isDown) return;
+      const x = e.touches[0].pageX;
+      const walk = startX - x;
+      container.scrollLeft = scrollLeft + walk;
+    });
+  
+    container.addEventListener('touchend', () => {
+      isDown = false;
+    });
+  
     window.addEventListener('wheel', function (e) {
-      let sensitivityFactor;
-      if (Math.abs(e.deltaY) <= deltaThreshold) {
-        sensitivityFactor = touchpadSensitivity;
-      } else {
-        sensitivityFactor = mouseSensitivity;
-      }
-
       container.scrollBy({
-        left: e.deltaY * sensitivityFactor,
+        left: e.deltaY,
         behavior: 'smooth'
       });
       e.preventDefault();
     }, { passive: false });
   </script>
+  
 </body>
+
 </html>
