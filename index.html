@@ -15,7 +15,7 @@
     html, body {
       height: 100vh;
       width: 100vw;
-      
+      /* overflow: hidden; REMOVED this line */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #1e1e2f;
     }
@@ -28,7 +28,6 @@
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
     }
 
     .section {
@@ -62,11 +61,10 @@
       margin: 1rem 0;
       border-left: 3px solid #00c7b1;
       padding-left: 1rem;
-      
     }
 
     .section3 {
-      background-color: #0e0f1a; /* or a new color if you want */
+      background-color: #0e0f1a;
       flex-direction: column;
       display: flex;
       align-items: center;
@@ -76,7 +74,6 @@
       padding: 2rem;
     }
 
-
     .horizontal-scroll-wrapper::-webkit-scrollbar {
       display: none;
     }
@@ -85,6 +82,7 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
     @media (max-width: 768px) {
       .section {
         font-size: 1.2rem;
@@ -93,10 +91,9 @@
       }
 
       .section2 {
-      
-          padding: 1rem;
-          align-items: flex-start;
-          font-size: 1rem;
+        padding: 1rem;
+        align-items: flex-start;
+        font-size: 1rem;
       }
 
       .section2 > div > div {
@@ -115,6 +112,7 @@
         font-size: 1.4rem;
         padding: 1rem;
       }
+
       .bg-video-section {
         position: absolute;
         top: 0;
@@ -123,50 +121,45 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0.4; /* Optional for visibility of text */
+        opacity: 0.4;
       }
-
     }
-      .experience-card {
-        position: relative;
-        flex: 0 0 31vw;
-        height: 700px; /* Adjust height as needed */
-        overflow: hidden;
-        border-radius: 12px;
-        color: #00c7b1;
-        font-size: 0.7em;
-      }
 
-      .bg-video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 0;
-        opacity: 0.5; /* Optional: gives it a more subtle background feel */
-      }
+    .experience-card {
+      position: relative;
+      flex: 0 0 31vw;
+      height: 700px;
+      overflow: hidden;
+      border-radius: 12px;
+      color: #00c7b1;
+      font-size: 0.7em;
+    }
 
-      .experience-content {
-        position: relative;
-        z-index: 1;
-        padding: 1rem;
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0); /* Optional: adds background blur */
-        border-radius: 12px;
-      }
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.5;
+    }
 
+    .experience-content {
+      position: relative;
+      z-index: 1;
+      padding: 1rem;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 12px;
+    }
   </style>
 </head>
 
-
-
-
-
-
 <body>
   <div class="horizontal-scroll-wrapper" id="scroll-container">
+    
     <div class="section section1">
       <div>
         <h1>Amogh Shrivastava</h1>
@@ -174,13 +167,13 @@
         <p>Physics Undergraduate</p>
       </div>
     </div>
+
     <div class="section section2">
       <div style="width: 100%; display: flex; flex-direction: column; text-align: center;">
         <h1 style="color:#00c7b1; text-align:center">Experience</h1>
         
         <div style="display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 1.5rem;">
     
-          <!-- Experience Card 1 -->
           <div class="experience-card">
             <video autoplay muted loop playsinline class="bg-video">
               <source src="video1.mp4" type="video/mp4" />
@@ -190,7 +183,6 @@
             </div>
           </div>
     
-          <!-- Experience Card 2 -->
           <div class="experience-card">
             <video autoplay muted loop playsinline class="bg-video">
               <source src="video2.mp4" type="video/mp4" />
@@ -200,7 +192,6 @@
             </div>
           </div>
     
-          <!-- Experience Card 3 -->
           <div class="experience-card">
             <video autoplay muted loop playsinline class="bg-video">
               <source src="video3.mp4" type="video/mp4" />
@@ -214,13 +205,11 @@
       </div>
     </div>
     
-    
     <div class="section section3">
       <div>
         <h1>Skills & Projects</h1>
         <p>I know this belonged in the prev section, I was a ...............................................</p>
       </div>
-    
     </div>
 
     <div class="section section3">
@@ -228,45 +217,44 @@
         <h1>Skills & Projects2</h1>
         <p>2I know this belonged in the prev section, I was a ...............................................</p>
       </div>
-    
     </div>
+
     <div class="section section3">
-      <!-- Background Video -->
       <video autoplay muted loop playsinline class="bg-video-section">
         <source src="HERE.mp4" type="video/mp4" />
       </video>
     
-      <!-- Foreground Content -->
       <div class="section3-content">
         <h1>Skills & Projects3</h1>
-        <p>
-          3I know this belonged in the prev section, I was a ...............................................
-        </p>
+        <p>3I know this belonged in the prev section, I was a ...............................................</p>
       </div>
     </div>
-    
+
   </div>
 
   <script>
-    const container = document.getElementById('scroll-container');
-    const mouseSensitivity = 1;
-    const touchpadSensitivity = 25;
-    const deltaThreshold = 200;
+    // Desktop-only horizontal wheel scroll enhancement
+    if (!('ontouchstart' in window)) {
+      const container = document.getElementById('scroll-container');
+      const mouseSensitivity = 1;
+      const touchpadSensitivity = 25;
+      const deltaThreshold = 200;
 
-    window.addEventListener('wheel', function (e) {
-      let sensitivityFactor;
-      if (Math.abs(e.deltaY) <= deltaThreshold) {
-        sensitivityFactor = touchpadSensitivity;
-      } else {
-        sensitivityFactor = mouseSensitivity;
-      }
+      window.addEventListener('wheel', function (e) {
+        let sensitivityFactor;
+        if (Math.abs(e.deltaY) <= deltaThreshold) {
+          sensitivityFactor = touchpadSensitivity;
+        } else {
+          sensitivityFactor = mouseSensitivity;
+        }
 
-      container.scrollBy({
-        left: e.deltaY * sensitivityFactor,
-        behavior: 'smooth'
-      });
-      e.preventDefault();
-    }, { passive: false });
+        container.scrollBy({
+          left: e.deltaY * sensitivityFactor,
+          behavior: 'smooth'
+        });
+        e.preventDefault();
+      }, { passive: false });
+    }
   </script>
 </body>
 </html>
