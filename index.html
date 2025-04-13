@@ -10,10 +10,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-    .section {
-      touch-action: pan-y pan-x;
-    }
-
 
     html, body {
       height: 100vh;
@@ -31,10 +27,7 @@
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
-    }
-
-    .horizontal-scroll-wrapper::-webkit-scrollbar {
-      display: none;
+      scroll-behavior: smooth;
     }
 
     .section {
@@ -68,10 +61,11 @@
       margin: 1rem 0;
       border-left: 3px solid #00c7b1;
       padding-left: 1rem;
+      
     }
 
     .section3 {
-      background-color: #0e0f1a;
+      background-color: #0e0f1a; /* or a new color if you want */
       flex-direction: column;
       display: flex;
       align-items: center;
@@ -81,10 +75,17 @@
       padding: 2rem;
     }
 
+
+    .horizontal-scroll-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+
+   
     .experience-card {
       position: relative;
       flex: 31vw;
-      height: 70vh;
+      height: 70vh; /* Adjust height as needed */
       overflow: hidden;
       border-radius: 12px;
       color: #00c7b1;
@@ -99,7 +100,7 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
-      opacity: 0.5;
+      opacity: 0.5; /* Optional: gives it a more subtle background feel */
     }
 
     .experience-content {
@@ -107,10 +108,9 @@
       z-index: 1;
       padding: 1rem;
       text-align: center;
-      background-color: rgba(0, 0, 0, 0);
+      background-color: rgba(0, 0, 0, 0); /* Optional: adds background blur */
       border-radius: 12px;
     }
-
     @media (max-width: 768px) {
       .section {
         font-size: 1.2rem;
@@ -119,15 +119,11 @@
       }
 
       .section2 {
-        height: 100vh;
-        overflow-y: auto;
-        padding: 1rem;
-        font-size: 1rem;
-        flex: 0 0 100vw;
-      }
-
-      .section2 > div {
-        align-items: flex-start;
+          
+          padding: 1rem;
+          align-items: flex-start;
+          font-size: 1rem;
+          height: auto;
       }
 
       .section2 > div > div {
@@ -135,20 +131,19 @@
         overflow-x: hidden !important;
         gap: 1rem !important;
         width: 100%;
+        height: auto;
       }
 
-      .experience-card {
-        flex: 1 1 auto !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 250px;
+      .section2 > div > div > div {
+        flex: 1 1 100% !important;
+        width: 100%;
+        height: auto;
       }
 
       .section3 {
         font-size: 1.4rem;
         padding: 1rem;
       }
-
       .bg-video-section {
         position: absolute;
         top: 0;
@@ -157,11 +152,19 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0.4;
+        opacity: 0.4; /* Optional for visibility of text */
       }
+      
+
     }
+
   </style>
 </head>
+
+
+
+
+
 
 <body>
   <div class="horizontal-scroll-wrapper" id="scroll-container">
@@ -172,49 +175,53 @@
         <p>Physics Undergraduate</p>
       </div>
     </div>
-
     <div class="section section2">
       <div style="width: 100%; display: flex; flex-direction: column; text-align: center;">
         <h1 style="color:#00c7b1; text-align:center">Experience</h1>
+        
         <div style="display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 1.5rem;">
+    
           <!-- Experience Card 1 -->
           <div class="experience-card">
             <video autoplay muted loop playsinline class="bg-video">
               <source src="video1.mp4" type="video/mp4" />
             </video>
             <div class="experience-content">
-              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Pretium tellus duis convallis tempus leo eu aenean. Iaculis massa nisl malesuada lacinia integer nunc posuere.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit. Pretium tellus duis convallis tempus leo eu aenean. Iaculis massa nisl malesuada lacinia integer nunc posuere. Conubia nostra inceptos himenaeos orci varius natoque penatibus. Nulla molestie mattis scelerisque maximus eget fermentum odio. Blandit quis suspendisse aliquet nisi sodales consequat magna. Ligula congue sollicitudin erat viverra ac tincidunt nam. Velit aliquam imperdiet mollis nullam volutpat porttitor ullamcorper. </p>
             </div>
           </div>
-
+    
           <!-- Experience Card 2 -->
           <div class="experience-card">
             <video autoplay muted loop playsinline class="bg-video">
               <source src="video2.mp4" type="video/mp4" />
             </video>
             <div class="experience-content">
-              <p>Velit aliquam imperdiet mollis nullam volutpat porttitor ullamcorper. Dui felis venenatis ultrices proin libero feugiat tristique. Cubilia curae hac habitasse platea.</p>
+              <p>Velit aliquam imperdiet mollis nullam volutpat porttitor ullamcorper. Dui felis venenatis ultrices proin libero feugiat tristique. Cubilia curae hac habitasse platea dictumst lorem ipsum. Sem placerat in id cursus mi pretium tellus. Fringilla lacus nec metus bibendum egestas iaculis massa. Taciti sociosqu ad litora torquent per conubia nostra. Ridiculus mus donec rhoncus eros lobortis nulla molestie. Mauris pharetra vestibulum fusce dictum risus blandit quis.</p>
             </div>
           </div>
-
+    
           <!-- Experience Card 3 -->
           <div class="experience-card">
             <video autoplay muted loop playsinline class="bg-video">
               <source src="video3.mp4" type="video/mp4" />
             </video>
             <div class="experience-content">
-              <p>Finibus facilisis dapibus etiam interdum tortor ligula congue. Justo lectus commodo augue arcu dignissim velit aliquam. Primis vulputate ornare sagittis.</p>
+              <p>Finibus facilisis dapibus etiam interdum tortor ligula congue. Justo lectus commodo augue arcu dignissim velit aliquam. Primis vulputate ornare sagittis vehicula praesent dui felis. Senectus netus suscipit auctor curabitur facilisi cubilia curae. Quisque faucibus ex sapien vitae pellentesque sem placerat.</p>
             </div>
           </div>
+    
         </div>
       </div>
     </div>
-
+    
+    
     <div class="section section3">
       <div>
         <h1>Skills & Projects</h1>
         <p>I know this belonged in the prev section, I was a ...............................................</p>
       </div>
+    
     </div>
 
     <div class="section section3">
@@ -222,52 +229,59 @@
         <h1>Skills & Projects2</h1>
         <p>2I know this belonged in the prev section, I was a ...............................................</p>
       </div>
+    
     </div>
-
     <div class="section section3">
+      <!-- Background Video -->
       <video autoplay muted loop playsinline class="bg-video-section">
         <source src="HERE.mp4" type="video/mp4" />
       </video>
+    
+      <!-- Foreground Content -->
       <div class="section3-content">
         <h1>Skills & Projects3</h1>
-        <p>3I know this belonged in the prev section, I was a ...............................................</p>
+        <p>
+          3I know this belonged in the prev section, I was a ...............................................
+        </p>
       </div>
     </div>
+    
   </div>
 
   <script>
     const container = document.getElementById('scroll-container');
-
+  
     let startX = 0;
+    let scrollLeft = 0;
     let isDown = false;
-
+  
     container.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
       isDown = true;
+      startX = e.touches[0].pageX;
+      scrollLeft = container.scrollLeft;
     });
-
+  
     container.addEventListener('touchmove', (e) => {
       if (!isDown) return;
-      const x = e.touches[0].clientX;
-      const diff = startX - x;
-      container.scrollLeft += diff;
-      startX = x; // update to current for smoother dragging
+      const x = e.touches[0].pageX;
+      const walk = (startX - x) * 0.5; // Reduce scroll speed here (lower multiplier = smoother)
+      container.scrollLeft = scrollLeft + walk;
     });
-
+  
     container.addEventListener('touchend', () => {
       isDown = false;
     });
-
+  
     window.addEventListener('wheel', function (e) {
       container.scrollBy({
-        left: e.deltaY * 0.5,
+        left: e.deltaY * 0.5, // Smoother wheel scroll
         behavior: 'smooth'
       });
       e.preventDefault();
     }, { passive: false });
   </script>
-
-
-
+  
+  
 </body>
+
 </html>
