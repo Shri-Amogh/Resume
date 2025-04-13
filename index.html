@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Amogh Shrivastava</title>
   <style>
     * {
@@ -27,6 +28,7 @@
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
     }
 
     .section {
@@ -47,7 +49,7 @@
     }
 
     .section2 {
-      background-color: #1e1e2f;
+      background-color: #0e0f1a;
       flex-direction: column;
       color: #ff9901;
       padding: 2rem;
@@ -60,15 +62,16 @@
       margin: 1rem 0;
       border-left: 3px solid #00c7b1;
       padding-left: 1rem;
+      
     }
 
     .section3 {
-      background-color: #1e1e2f; /* or a new color if you want */
+      background-color: #0e0f1a; /* or a new color if you want */
       flex-direction: column;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #016bff;
+      color: #39FF14;
       font-size: 1.8rem;
       padding: 2rem;
     }
@@ -82,8 +85,86 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+    @media (max-width: 768px) {
+      .section {
+        font-size: 1.2rem;
+        padding: 1rem;
+        flex-direction: column;
+      }
+
+      .section2 {
+      
+          padding: 1rem;
+          align-items: flex-start;
+          font-size: 1rem;
+      }
+
+      .section2 > div > div {
+        flex-direction: column !important;
+        overflow-x: hidden !important;
+        gap: 1rem !important;
+        width: 100%;
+      }
+
+      .section2 > div > div > div {
+        flex: 1 1 100% !important;
+        width: 100%;
+      }
+
+      .section3 {
+        font-size: 1.4rem;
+        padding: 1rem;
+      }
+      .bg-video-section {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.4; /* Optional for visibility of text */
+      }
+
+    }
+      .experience-card {
+        position: relative;
+        flex: 0 0 31vw;
+        height: 700px; /* Adjust height as needed */
+        overflow: hidden;
+        border-radius: 12px;
+        color: #00c7b1;
+        font-size: 0.7em;
+      }
+
+      .bg-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        opacity: 0.5; /* Optional: gives it a more subtle background feel */
+      }
+
+      .experience-content {
+        position: relative;
+        z-index: 1;
+        padding: 1rem;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0); /* Optional: adds background blur */
+        border-radius: 12px;
+      }
+
   </style>
 </head>
+
+
+
+
+
+
 <body>
   <div class="horizontal-scroll-wrapper" id="scroll-container">
     <div class="section section1">
@@ -94,28 +175,45 @@
       </div>
     </div>
     <div class="section section2">
-      <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-start;">
-        <h1 style="color:#00c7b1; margin-left: 10rem;">Experience</h1>
-        <div style="display: flex; overflow-x: auto; padding: 2rem; gap: 2rem;">
-          <div style="flex: 0 0 27vw; padding: 1rem; border-radius: 2px; color: #00c7b1;">
-            <p>
-              I have 4 terms worth of cs classes when i apply, plus about 40 credits in Physics 
-            </p>
+      <div style="width: 100%; display: flex; flex-direction: column; text-align: center;">
+        <h1 style="color:#00c7b1; text-align:center">Experience</h1>
+        
+        <div style="display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 1.5rem;">
+    
+          <!-- Experience Card 1 -->
+          <div class="experience-card">
+            <video autoplay muted loop playsinline class="bg-video">
+              <source src="video1.mp4" type="video/mp4" />
+            </video>
+            <div class="experience-content">
+              <p>I have 4 terms worth of cs classes when I apply, plus about 40 credits in Physics</p>
+            </div>
           </div>
-          <div style="flex: 0 0 27vw; padding: 1rem; border-radius: 2px; color: #00c7b1;">
-            <p>
-              I love doing good stuff !! :)
-            </p>
+    
+          <!-- Experience Card 2 -->
+          <div class="experience-card">
+            <video autoplay muted loop playsinline class="bg-video">
+              <source src="video2.mp4" type="video/mp4" />
+            </video>
+            <div class="experience-content">
+              <p>I love doing good stuff !! :)</p>
+            </div>
           </div>
-          <div style="flex: 0 0 27vw; padding: 1rem; border-radius: 2px; color: #00c7b1;">
-            <p>
-              This is a test site
-            </p>
+    
+          <!-- Experience Card 3 -->
+          <div class="experience-card">
+            <video autoplay muted loop playsinline class="bg-video">
+              <source src="video3.mp4" type="video/mp4" />
+            </video>
+            <div class="experience-content">
+              <p>This is a test site</p>
+            </div>
           </div>
-          
+    
         </div>
       </div>
     </div>
+    
     
     <div class="section section3">
       <div>
@@ -124,6 +222,29 @@
       </div>
     
     </div>
+
+    <div class="section section3">
+      <div>
+        <h1>Skills & Projects2</h1>
+        <p>2I know this belonged in the prev section, I was a ...............................................</p>
+      </div>
+    
+    </div>
+    <div class="section section3">
+      <!-- Background Video -->
+      <video autoplay muted loop playsinline class="bg-video-section">
+        <source src="HERE.mp4" type="video/mp4" />
+      </video>
+    
+      <!-- Foreground Content -->
+      <div class="section3-content">
+        <h1>Skills & Projects3</h1>
+        <p>
+          3I know this belonged in the prev section, I was a ...............................................
+        </p>
+      </div>
+    </div>
+    
   </div>
 
   <script>
